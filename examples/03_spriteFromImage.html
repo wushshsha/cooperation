@@ -1,0 +1,47 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Make a sprite from an image</title>
+<body>
+<script src="../pixi/pixi.min.js"></script>
+<script>
+
+//Create a Pixi Application
+let app = new PIXI.Application({ 
+    width: 256, 
+    height: 256,                       
+    antialiasing: true, 
+    transparent: false, 
+    resolution: 1 //屏幕分辨率
+  }
+);
+
+//Add the canvas that Pixi automatically created for you to the HTML document
+document.body.appendChild(app.view);//添加app到舞台
+
+//load an image and run the `setup` function when it's done
+PIXI.loader
+  .add("images/cat.png")//家在图片
+  .load(setup);//加载完成后点用setup函数
+
+//This `setup` function will run when the image has loaded
+function setup() {
+
+  //Create the cat sprite//创建精灵，通过PIXI.loader.resources().texture 来实现
+  let cat = new PIXI.Sprite(PIXI.loader.resources["images/cat.png"].texture);
+  
+  //You can also create the `cat` sprite from the texture, like this:
+  //let cat = new PIXI.Sprite(PIXI.TextureCache["images/cat.png"]);//也可以用 PIXI.TexxtureCache()
+  //Add the cat to the stage
+  app.stage.addChild(cat);//添加cat精灵到舞台
+
+  //If you ever need to, here's how you can clean out WebGL's GPU
+  //memory manually
+  /*
+  Object.keys(TextureCache).forEach(function(texture) {
+    TextureCache[texture].destroy(true);
+  });
+  */
+}
+</script>
+</body>
+
