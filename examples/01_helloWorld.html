@@ -7,11 +7,10 @@
 <body>
   <script src="../pixi/pixi.min.js"></script>
   <script type="text/javascript">		
-	  let type = "WebGL"
-	  if(!PIXI.utils.isWebGLSupported()){
-	    type = "canvas"
-	  }
-
+    let type = "Webgl";
+    if(!PIXI.utils.isWebGLSupported()){
+      type = 'Canvas';
+    }
 	  PIXI.utils.sayHello(type)
   </script>
 </body>
