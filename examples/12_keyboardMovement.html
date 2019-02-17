@@ -47,13 +47,14 @@ function setup() {
       up = keyboard(38),
       right = keyboard(39),
       down = keyboard(40);
+  //创建四个按键事件
 
   //Left arrow key `press` method
   left.press = () => {
     //Change the cat's velocity when the key is pressed
     cat.vx = -5;
     cat.vy = 0;
-  };
+  };//赋值按压事件
   
   //Left arrow key `release` method
   left.release = () => {
@@ -63,7 +64,7 @@ function setup() {
     if (!right.isDown && cat.vy === 0) {
       cat.vx = 0;
     }
-  };
+  };//释放按压事件
 
   //Up
   up.press = () => {
@@ -149,10 +150,10 @@ function keyboard(keyCode) {
   //Attach event listeners
   window.addEventListener(
     "keydown", key.downHandler.bind(key), false
-  );//
+  );//添加down事件，并绑定keydown事件
   window.addEventListener(
     "keyup", key.upHandler.bind(key), false
-  );
+  );//添加up事件，并绑定keyup事件
   return key;
 }
 
